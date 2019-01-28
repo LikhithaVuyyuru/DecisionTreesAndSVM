@@ -1,0 +1,15 @@
+from sklearn.metrics import classification_report, confusion_matrix
+dot_data = tree.export_graphviz(tree1[1], out_file=None,filled=True)
+graph = graphviz.Source(dot_data)
+
+pred = tree1[1].predict(Data_X)
+Accuracy = metrics.accuracy_score(Data_Y,pred)*100
+Precision = metrics.precision_score(Data_Y, pred, average = None)*100
+Recall = metrics.recall_score(Data_Y, pred, average = None)*100
+cm = confusion_matrix(Data_Y,pred)
+
+print("Accuracy: ", Accuracy,"\nPrecision:", Precision,"\nRecall:",Recall, "\nConfusion Matrix:\n", cm)
+plot_decision_regions(X_train,Y_train, clf, legend=2)
+plt.show()
+
+graph

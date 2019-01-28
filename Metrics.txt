@@ -1,0 +1,10 @@
+from sklearn.metrics import classification_report, confusion_matrix
+
+pred = svm1[0].predict(Data_X)
+Accuracy = metrics.accuracy_score(Data_Y,pred)*100
+Precision = metrics.precision_score(Data_Y, pred, average = None)*100
+Recall = metrics.recall_score(Data_Y, pred, average = None)*100
+cm = confusion_matrix(Data_Y,pred)
+
+print("Accuracy: ", Accuracy,"\nPrecision:", Precision,"\nRecall:",Recall, "\nConfusion Matrix:\n", cm)
+

@@ -1,0 +1,11 @@
+Task1:
+Consider the dataset Data1.csv. It has 450 data points on a 2-D plane. The first two columns contain the X and Y attribute values and the third column contains the class label. Perform the following tasks using this dataset and include the answers/results in your submission. Use Matlab or Scikit toolboxes (Python) to perform all the tasks and include the commands used to achieve each outcome/result.
+a.	Display all the data points on a 2-D grid, distinguishing the points belonging to the two classes. 
+b.	Use 5-fold testing to find the best decision tree that you can fit to this dataset. Show all the parameter-value choices you made to get the best performance. You must try to tune the parameters until you get the best possible performance. Use all 450 data points as the test set to compute the confusion matrix, accuracy, and precision and recall values for each class. 
+c.	Draw the lines on the 2-D plot of the data to show the boundaries that your decision tree learned.
+d.	Draw the best possible decision tree boundaries that you would draw if you were to use your intuition instead of the decision tree induction program. Show the accuracy, precision and recall values for this “ideal” decision tree. 
+e.	Repeat part (b) above for a linear SVM instead of the decision tree. Choose the parameter values that give you the best classification performance in terms of accuracy. State the chosen values of these parameters and give reasons in brief about why you think these values give the best performance. On a 2-D plot of the data show the support vectors learned by your SVM classifier. Using the support vectors draw an estimate of the boundary learned by your program.
+f.	Repeat part (e) above using an RBF kernel to learn a non-linear SVM.
+
+Task2:
+Consider a dataset containing six 4-D points followed by their class labels, given as follows: (3 4 2 5; C1), (5 9 3 10; C0), (1 8 11 6; C1), (6 1 6 9: C0), (12, -2 1 8; C0), (5 6 0 2; C1). Show two full epochs of the perceptron training algorithm with these data points. Use (3 4 5 6 7) as the initial weight vector.
