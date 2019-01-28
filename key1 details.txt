@@ -1,0 +1,3 @@
+keyname: key1
+passphrase: hadoop
+scp key1 vuyyurra@hadoop-gate-0.eecs.uc.edu:/.ssh/authorized keys

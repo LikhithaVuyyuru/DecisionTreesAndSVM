@@ -1,0 +1,12 @@
+import pandas as pd
+data = pandas.read_csv("Data1.csv", header=0)
+col_a = list(data.X)
+col_b = list(data.Y)
+col_c = list(data.C)
+
+import matplotlib.pyplot as plt
+plt.scatter(col_a, col_b)
+df=pd.DataFrame(data={'A':col_a,'B':col_b,'C':col_c})
+import matplotlib.cm as cm
+points = plt.scatter(df.A, df.B, c=df.C, cmap="jet", lw=0)
+plt.colorbar(points)

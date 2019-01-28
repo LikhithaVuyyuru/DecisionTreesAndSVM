@@ -1,0 +1,50 @@
+import pandas as pd
+from sklearn import tree
+from sklearn import metrics
+from sklearn import svm
+from mlxtend.plotting import plot_decision_regions
+
+
+data1 = pd.read_csv('Data1.csv')
+feature_names1 = data1.loc[:,'X':'Y']
+target_names1 = data1.loc[:,'C']
+
+Data_X= data1.values[:,0:2]
+Data_Y= data1.values[:,2]
+
+
+clf = tree.DecisionTreeClassifier()
+clf = clf.fit(feature_names1, target_names1)
+import graphviz
+dot_data = tree.export_graphviz(clf, out_file=None,filled=True)
+graph = graphviz.Source(dot_data) 
+graph
+from sklearn.model_selection import KFold
+import pickle
+list1 = []
+
+kf = KFold(n_splits=5, random_state=None, shuffle=True)
+for train_index, test_index in kf.split(Data_X):
+    X_train, X_test = Data_X[train_index], Data_X[test_index]
+    Y_train, Y_test = Data_Y[train_index], Data_Y[test_index]
+    #print(Y_train)
+    clf = svm.SVC(kernel='linear', C=10, random_state=0)
+    #clf = tree.DecisionTreeClassifier()
+    clf = clf.fit(X_train, Y_train)
+    pred= clf.predict(X_test)
+    #list1.append(pickle.load(clf))
+    #metrics.accuracy_scores()
+    Accuracy = metrics.accuracy_score(Y_test,pred)*100
+    Precision = metrics.precision_score(Y_test, pred)*100
+    Recall = metrics.recall_score(Y_test, pred)*100
+    print ("Accuracy is ", metrics.accuracy_score(Y_test,pred)*100)
+    print("Precision: ", metrics.precision_score(Y_test, pred)*100)
+    print("Recall: ", metrics.recall_score(Y_test, pred)*100)
+    if Accuracy >= 90:
+        #dot_data = tree.export_graphviz(clf, out_file=None,filled=True)
+        #graph = graphviz.Source(dot_data)
+        Y_train = Y_train.astype(int)
+        plot_decision_regions(X_train,Y_train, clf, legend=2)
+        #plt.show()
+#print(list1)
+#graph
